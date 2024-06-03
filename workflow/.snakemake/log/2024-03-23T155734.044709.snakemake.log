@@ -1,0 +1,4 @@
+WorkflowError in file /home/miaoli/labordivision/workflow/Snakefile_dataclean.smk, line 45:
+Duplicate output file pattern in rule select_intl_alpha. First two duplicate for entries 1 and 2.
+  File "/home/miaoli/labordivision/workflow/Snakefile", line 45, in <module>
+  File "/home/miaoli/labordivision/workflow/Snakefile_dataclean.smk", line 45, in <module>

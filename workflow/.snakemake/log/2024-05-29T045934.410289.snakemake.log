@@ -1,0 +1,34 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                             count    min threads    max threads
+----------------------------  -------  -------------  -------------
+all                                 1              1              1
+plot_representation_overtime        2              1              1
+total                               3              1              1
+
+Select jobs to execute...
+
+[Wed May 29 04:59:35 2024]
+rule plot_representation_overtime:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf
+    jobid: 11
+    reason: Missing output files: ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf
+    wildcards: classify_types=st
+    resources: tmpdir=/tmp
+
+[Wed May 29 04:59:55 2024]
+Error in rule plot_representation_overtime:
+    jobid: 11
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf
+    shell:
+        python scripts/plot_representation_overtime.py ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-05-29T045934.410289.snakemake.log

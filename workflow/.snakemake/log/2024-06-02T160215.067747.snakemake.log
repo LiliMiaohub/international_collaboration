@@ -1,0 +1,51 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                    count    min threads    max threads
+-------------------  -------  -------------  -------------
+all                        1              1              1
+cal_first_last_pair        1              1              1
+cal_pub_pair_raw           1              1              1
+total                      3              1              1
+
+Select jobs to execute...
+
+[Sun Jun  2 16:02:19 2024]
+rule cal_first_last_pair:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv
+    output: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/first_last_pair.csv
+    jobid: 13
+    reason: Missing output files: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/first_last_pair.csv
+    resources: tmpdir=/tmp
+
+[Sun Jun  2 16:26:44 2024]
+Finished job 13.
+1 of 3 steps (33%) done
+Select jobs to execute...
+
+[Sun Jun  2 16:26:44 2024]
+rule cal_pub_pair_raw:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv
+    output: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_pair_raw.csv
+    jobid: 15
+    reason: Missing output files: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_pair_raw.csv
+    resources: tmpdir=/tmp
+
+[Sun Jun  2 16:27:09 2024]
+Finished job 15.
+2 of 3 steps (67%) done
+Select jobs to execute...
+
+[Sun Jun  2 16:27:11 2024]
+localrule all:
+    input: ../data/dropbox/LaborDivision/data/cleanedraw/pub.pkl, ../data/dropbox/LaborDivision/data/cleanedraw/pub_author.pkl, ../data/dropbox/LaborDivision/data/cleanedraw/author_info.pkl, ../data/dropbox/LaborDivision/data/deriveddata/all/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/international/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/figs/st/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/income/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/st/international_workforce_prop.pdf, ../data/dropbox/LaborDivision/figs/income/international_workforce_prop.pdf, ../data/dropbox/LaborDivision/figs/st/authorship_distribution.pdf, ../data/dropbox/LaborDivision/figs/income/authorship_distribution.pdf, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv, ../data/dropbox/LaborDivision/figs/authorship_representation_alltime.pdf, ../data/dropbox/LaborDivision/figs/authorship_representation_alltime_legend.pdf, ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf, ../data/dropbox/LaborDivision/figs/income/authorship_representation_overtime.pdf, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/first_last_pair.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_first.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_last.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_pair_raw.csv
+    jobid: 0
+    reason: Input files updated by another job: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_pair_raw.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/first_last_pair.csv
+    resources: tmpdir=/tmp
+
+[Sun Jun  2 16:27:11 2024]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: .snakemake/log/2024-06-02T160215.067747.snakemake.log

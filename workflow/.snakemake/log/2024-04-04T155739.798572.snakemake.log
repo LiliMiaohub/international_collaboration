@@ -1,0 +1,30 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count    min threads    max threads
+--------------------  -------  -------------  -------------
+all                         1              1              1
+reshuffle_authorship        1              1              1
+total                       2              1              1
+
+Select jobs to execute...
+
+[Thu Apr  4 15:57:41 2024]
+rule reshuffle_authorship:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv
+    output: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_reshuffled.pkl, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv
+    jobid: 7
+    reason: Missing output files: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_reshuffled.pkl, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv
+    resources: tmpdir=/tmp
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in rule reshuffle_authorship in file /home/miaoli/labordivision/workflow/Snakefile_distribution.smk, line 29:
+Job 7  completed successfully, but some output files are missing. Missing files after 5 seconds. This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait:
+../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_reshuffled.pkl
+Removing output files of failed job reshuffle_authorship since they might be corrupted:
+../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-04-04T155739.798572.snakemake.log

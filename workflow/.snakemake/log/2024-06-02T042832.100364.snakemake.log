@@ -1,0 +1,33 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count    min threads    max threads
+--------------------  -------  -------------  -------------
+all                         1              1              1
+cal_conditional_pair        1              1              1
+cal_pub_pair_raw            1              1              1
+total                       3              1              1
+
+Select jobs to execute...
+
+[Sun Jun  2 04:28:38 2024]
+rule cal_conditional_pair:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv
+    output: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_first.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_last.csv
+    jobid: 14
+    reason: Missing output files: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_last.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_first.csv
+    resources: tmpdir=/tmp
+
+Terminating processes on user request, this might take some time.
+[Sun Jun  2 04:29:12 2024]
+Error in rule cal_conditional_pair:
+    jobid: 14
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv
+    output: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_first.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_last.csv
+    shell:
+        python scripts/cal_conditional_pair.py ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_first.csv ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_last.csv
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Complete log: .snakemake/log/2024-06-02T042832.100364.snakemake.log

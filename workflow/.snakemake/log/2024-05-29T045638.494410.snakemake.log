@@ -1,0 +1,78 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                                          count    min threads    max threads
+-----------------------------------------  -------  -------------  -------------
+all                                              1              1              1
+plot_authorship_distribution                     1              1              1
+plot_international_workforce_distribution        2              1              1
+plot_representation_overtime                     2              1              1
+total                                            6              1              1
+
+Select jobs to execute...
+
+[Wed May 29 04:56:39 2024]
+rule plot_international_workforce_distribution:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/international/pub_author.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_income.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/income/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/income/international_workforce_prop.pdf
+    jobid: 6
+    reason: Missing output files: ../data/dropbox/LaborDivision/figs/income/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/income/international_workforce_prop.pdf
+    wildcards: classify_types=income
+    resources: tmpdir=/tmp
+
+[Wed May 29 04:57:21 2024]
+Finished job 6.
+1 of 6 steps (17%) done
+Select jobs to execute...
+
+[Wed May 29 04:57:21 2024]
+rule plot_authorship_distribution:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/st/authorship_distribution.pdf
+    jobid: 7
+    reason: Missing output files: ../data/dropbox/LaborDivision/figs/st/authorship_distribution.pdf
+    wildcards: classify_types=st
+    resources: tmpdir=/tmp
+
+[Wed May 29 04:57:54 2024]
+Finished job 7.
+2 of 6 steps (33%) done
+Select jobs to execute...
+
+[Wed May 29 04:57:54 2024]
+rule plot_international_workforce_distribution:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/international/pub_author.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/st/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/st/international_workforce_prop.pdf
+    jobid: 5
+    reason: Missing output files: ../data/dropbox/LaborDivision/figs/st/international_workforce_prop.pdf, ../data/dropbox/LaborDivision/figs/st/international_workforce_raw.pdf
+    wildcards: classify_types=st
+    resources: tmpdir=/tmp
+
+[Wed May 29 04:58:37 2024]
+Finished job 5.
+3 of 6 steps (50%) done
+Select jobs to execute...
+
+[Wed May 29 04:58:37 2024]
+rule plot_representation_overtime:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf
+    jobid: 11
+    reason: Missing output files: ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf
+    wildcards: classify_types=st
+    resources: tmpdir=/tmp
+
+[Wed May 29 04:58:58 2024]
+Error in rule plot_representation_overtime:
+    jobid: 11
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf
+    shell:
+        python scripts/plot_representation_overtime.py ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-05-29T045638.494410.snakemake.log

@@ -1,0 +1,33 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                              count    min threads    max threads
+-----------------------------  -------  -------------  -------------
+all                                  1              1              1
+plot_representational_alltime        1              1              1
+total                                2              1              1
+
+Select jobs to execute...
+
+[Thu Apr  4 20:20:53 2024]
+rule plot_representational_alltime:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv, ../data/dropbox/LaborDivision/data/additionaldata/worldmap/ne_50m_admin_0_countries.shp
+    output: ../data/dropbox/LaborDivision/figs/authorship_representation_alltime.pdf, ../data/dropbox/LaborDivision/figs/authorship_representation_alltime_legend.pdf
+    jobid: 8
+    reason: Missing output files: ../data/dropbox/LaborDivision/figs/authorship_representation_alltime_legend.pdf, ../data/dropbox/LaborDivision/figs/authorship_representation_alltime.pdf
+    resources: tmpdir=/tmp
+
+[Thu Apr  4 20:21:16 2024]
+Error in rule plot_representational_alltime:
+    jobid: 8
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv, ../data/dropbox/LaborDivision/data/additionaldata/worldmap/ne_50m_admin_0_countries.shp
+    output: ../data/dropbox/LaborDivision/figs/authorship_representation_alltime.pdf, ../data/dropbox/LaborDivision/figs/authorship_representation_alltime_legend.pdf
+    shell:
+        python scripts/plot_representational_alltime.py ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv ../data/dropbox/LaborDivision/data/additionaldata/worldmap/ne_50m_admin_0_countries.shp ../data/dropbox/LaborDivision/figs/authorship_representation_alltime.pdf ../data/dropbox/LaborDivision/figs/authorship_representation_alltime_legend.pdf
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-04-04T202049.186206.snakemake.log

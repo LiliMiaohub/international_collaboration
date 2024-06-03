@@ -1,0 +1,2 @@
+SyntaxError in file /home/miaoli/labordivision/workflow/Snakefile, line 43:
+Unexpected keyword PUB_AUTHOR_CLEANED in rule definition (Snakefile, line 43)

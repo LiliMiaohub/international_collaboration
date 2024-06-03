@@ -1,0 +1,33 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                    count    min threads    max threads
+-------------------  -------  -------------  -------------
+all                        1              1              1
+cal_first_last_pair        1              1              1
+total                      2              1              1
+
+Select jobs to execute...
+
+[Fri May 31 01:42:00 2024]
+rule cal_first_last_pair:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv
+    output: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/first_last_pair.csv
+    jobid: 13
+    reason: Missing output files: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/first_last_pair.csv
+    resources: tmpdir=/tmp
+
+[Fri May 31 02:06:42 2024]
+Error in rule cal_first_last_pair:
+    jobid: 13
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv
+    output: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/first_last_pair.csv
+    shell:
+        python scripts/cal_first_last_pair.py ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/first_last_pair.csv
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-05-31T014156.156057.snakemake.log

@@ -1,22 +1,94 @@
-from os.path import join as pjoin
+##############################################################
+# main snakefile for the "labor division in international collaboration".
+#Target rules are distributed across the following files:
+# - Snakefile_datacleaning.smk
+#
+#
+#
+#
+##############################################################
 
-# You can use config file to set various variables including parameters.
-# configfile: "config.yaml"
+configfile: "config.yaml"
 
-DATA_DIR = "../data/"
-RAW_DATA_DIR = pjoin(DATA_DIR, "raw")
-DERIVED_DATA_DIR = pjoin(DATA_DIR, "derived")
+from os.path import join as osjoin
+import pandas as pd
 
-"""
+#main directories
+PROJ_DIR = config['proj_home']
+DATA_DIR = osjoin(PROJ_DIR, 'data')
+RAW_DATA_DIR = osjoin(DATA_DIR, 'rawdata')
+CLEANED_RAW_DIR = osjoin(DATA_DIR, 'cleanedraw')
+DERIVE_DATA_DIR = osjoin(DATA_DIR, 'deriveddata')
+ADDITIONAL_DATA_DIR = osjoin(DATA_DIR, 'additionaldata')
+FIG_DIR = osjoin(PROJ_DIR, 'figs')
+
+#raw data files
+PUB_RAW = osjoin(RAW_DATA_DIR, 'article_labordivision.txt')
+PUB_AUTHOR_RAW = osjoin(RAW_DATA_DIR,'article_cntry.txt')
+AUTHOR_INFO_RAW = osjoin(RAW_DATA_DIR, 'article_author_info.txt')
+
+#cleaned raw data files
+PUB_CLEANED = osjoin(CLEANED_RAW_DIR, 'pub.pkl')
+OSTBK2UID = osjoin(CLEANED_RAW_DIR,'ostbk_uid.pkl')
+PUB_AUTHOR_CLEANED = osjoin(CLEANED_RAW_DIR,'pub_author.pkl')
+AUTHOR_INFO_CLEANED = osjoin(CLEANED_RAW_DIR, 'author_info.pkl')
+
+#files derived from cleaned raw data
+PUB_AUTHOR_ALL = osjoin(DERIVE_DATA_DIR, 'all','pub_author.csv')
+PUB_AUTHOR_INTL = osjoin(DERIVE_DATA_DIR, 'international','pub_author.csv')
+PUB_AUTHOR_INTL_NOALPHA = osjoin(DERIVE_DATA_DIR, 'intl_noalpha','pub_author.csv')
+PUB_AUTHOR_RESHUFFLED = osjoin(DERIVE_DATA_DIR, 'intl_noalpha','authorship_reshuffle', 'pub_author_reshuffled.pkl')
+PUB_AUTHOR_EXPECTED = osjoin(DERIVE_DATA_DIR, 'intl_noalpha','authorship_reshuffle', 'pub_author_expected.csv')
+FIRST_LAST_PAIR = osjoin(DERIVE_DATA_DIR, 'intl_noalpha','authorship_reshuffle', 'first_last_pair.csv')
+FIXED_FIRST = osjoin(DERIVE_DATA_DIR, 'intl_noalpha','authorship_reshuffle', 'fixed_first.csv')
+FIXED_LAST = osjoin(DERIVE_DATA_DIR, 'intl_noalpha','authorship_reshuffle', 'fixed_last.csv')
+PUB_PAIR_RAW = osjoin(DERIVE_DATA_DIR, 'intl_noalpha','authorship_reshuffle', 'pub_pair_raw.csv')
+
+#additional files
+CNTRY_META = osjoin(ADDITIONAL_DATA_DIR, 'cntry_meta.csv')
+ST_GROUP = osjoin(ADDITIONAL_DATA_DIR, 'cntry_classification', 'cntry_{classify_types}.csv')
+COLOR_SCHEME = osjoin(ADDITIONAL_DATA_DIR, 'cntry_classification', 'color_scheme.csv')
+WORLD_SHP = osjoin(ADDITIONAL_DATA_DIR, 'worldmap', 'ne_50m_admin_0_countries.shp')
+
+#plot
+INTERNATIONAL_WORKFORCE_DISTRIBUTION_RAW = osjoin(FIG_DIR, '{classify_types}','international_workforce_raw.pdf')
+INTERNATIONAL_WORKFORCE_DISTRIBUTION_PROP = osjoin(FIG_DIR, '{classify_types}','international_workforce_prop.pdf')
+AUTHORSHIP_DISTRIBUTION = osjoin(FIG_DIR, '{classify_types}','authorship_distribution.pdf')
+AUTHORSHIP_REPRESENTATION = osjoin(FIG_DIR, 'authorship_representation_alltime.pdf')
+AUTHORSHIP_REPRESENTATION_LEGEND = osjoin(FIG_DIR, 'authorship_representation_alltime_legend.pdf')
+AUTHORSHIP_REPRESENTATION_OVERTIME = osjoin(FIG_DIR, '{classify_types}','authorship_representation_overtime.pdf')
+FIXED_FIRST_PLOT = osjoin(FIG_DIR, '{classify_types}', 'fixed_first_plot.pdf')
+
+########
+#params#
+########
+classify_types = ['st', 'income']
+
+##########
+#includes#
+##########
+include: "Snakefile_dataclean.smk"
+include: "Snakefile_distribution.smk"
+
 rule all:
     input:
-        FIG1
+        PUB_CLEANED,
+        PUB_AUTHOR_CLEANED,
+        AUTHOR_INFO_CLEANED,
+        PUB_AUTHOR_ALL,
+        PUB_AUTHOR_INTL,
+        PUB_AUTHOR_INTL_NOALPHA,
+        expand(INTERNATIONAL_WORKFORCE_DISTRIBUTION_RAW, classify_types=classify_types),
+        expand(INTERNATIONAL_WORKFORCE_DISTRIBUTION_PROP, classify_types=classify_types),
+        expand(AUTHORSHIP_DISTRIBUTION, classify_types=classify_types),
+        PUB_AUTHOR_EXPECTED,
+        AUTHORSHIP_REPRESENTATION,
+        AUTHORSHIP_REPRESENTATION_LEGEND,
+        expand(AUTHORSHIP_REPRESENTATION_OVERTIME, classify_types=classify_types),
+        FIRST_LAST_PAIR,
+        FIXED_FIRST,
+        FIXED_LAST,
+        PUB_PAIR_RAW,
+        expand(FIXED_FIRST_PLOT, classify_types=classify_types),
 
-rule figure1:
-    input:
-        SOME_DATASET
-    output:
-        FIG1
-    shell:
-        "python scripts/plot_fig1.py {input} {output}"
-"""
+        

@@ -1,0 +1,7 @@
+Building DAG of jobs...
+MissingInputException in rule clean_raw_article_cntry in file /home/miaoli/labordivision/workflow/Snakefile_dataclean.smk, line 18:
+Missing input files for rule clean_raw_article_cntry:
+    output: ../data/dropbox/LaborDivision/data/cleanraw/article
+    affected files:
+        ../data/dropbox/LaborDivision/data/additionaldata
+        ../data/dropbox/LaborDivision/data/rawdata/article_author_info.txt

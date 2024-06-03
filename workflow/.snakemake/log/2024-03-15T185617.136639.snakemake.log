@@ -1,0 +1,3 @@
+NameError in file /home/miaoli/labordivision/workflow/Snakefile, line 44:
+name 'PUB_AUTHOR_CLEANED' is not defined
+  File "/home/miaoli/labordivision/workflow/Snakefile", line 44, in <module>

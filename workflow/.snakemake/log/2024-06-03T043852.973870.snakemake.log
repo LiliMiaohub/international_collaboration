@@ -1,0 +1,4 @@
+NameError in file /home/miaoli/labordivision/workflow/Snakefile_distribution.smk, line 89:
+name 'FXIED_FIRST' is not defined
+  File "/home/miaoli/labordivision/workflow/Snakefile", line 71, in <module>
+  File "/home/miaoli/labordivision/workflow/Snakefile_distribution.smk", line 89, in <module>
