@@ -83,6 +83,7 @@ rule cal_conditional_pair:
     shell:
         "python scripts/cal_conditional_pair.py {input} {output}"
 
+inputfiles = [FIXED_FIRST]
 rule plot_fixed_first:
     input:
         PUB_PAIR_RAW,
@@ -94,6 +95,6 @@ rule plot_fixed_first:
     params:
         title='Country of the first author'
     shell:
-        "python scripts/plot_normed_authorship_pair.py {input} {output} {params.title}"
+        "python scripts/plot_normed_authorship_pair.py {input} {output} '{params.title}'"
         
     

@@ -83,6 +83,7 @@ rule cal_conditional_pair:
     shell:
         "python scripts/cal_conditional_pair.py {input} {output}"
 
+inputfiles = [FIXED_FIRST]
 rule plot_fixed_first:
     input:
         PUB_PAIR_RAW,
