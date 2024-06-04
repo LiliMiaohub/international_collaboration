@@ -32,6 +32,8 @@ def plot_worldmap(shp_path, df):
     world_geo=gp.read_file(shp_path)
     world_geo = world_geo[['ADMIN','NAME','ISO_A3','geometry']]
     world_geo=world_geo[world_geo.NAME!='Antarctica']
+    world_geo.loc[world_geo.NAME=='France','ISO_A3']='FRA'
+    world_geo.loc[world_geo.NAME=='Norway','ISO_A3']='NOR'
     
     colorsList = ['#A6A6A6', '#F4D05E', '#EA6B5F','#912855']
     cmap = colors.ListedColormap(colorsList)

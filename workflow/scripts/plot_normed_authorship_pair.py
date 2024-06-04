@@ -6,14 +6,14 @@ import numpy as np
 import sys
 import os
 
-def plot_normalization(df, xlabel, color_dict):
+def plot_normalization(df, xlabel, color_dict, xcol, huecol):
     
     fig, ax = plt.subplots()
-    sns.barplot(x='first_class', y='norm', hue='last_class', hue_order=color_dict.keys(), order=color_dict.keys(), 
+    sns.barplot(x=xcol, y='norm', hue=huecol, hue_order=color_dict.keys(), order=color_dict.keys(), 
                 data=df[df.norm>0],
                palette=color_dict,
                ax=ax)
-    sns.barplot(x='first_class', y='norm', hue='last_class', hue_order=color_dict.keys(), order=color_dict.keys(),
+    sns.barplot(x=xcol, y='norm', hue=huecol, hue_order=color_dict.keys(), order=color_dict.keys(),
                 data=df[df.norm<0],
                color='#D9D9D9',
                ax=ax)
@@ -59,6 +59,8 @@ if __name__ == "__main__":
     plot_path = sys.argv[5]
     
     xlabel = sys.argv[6]
+    xcol = sys.argv[7]
+    huecol = sys.argv[8]
     
     raw_df = pd.read_csv(raw_path)
     exp_df = pd.read_csv(exp_path)
@@ -76,5 +78,5 @@ if __name__ == "__main__":
     
     normed_df = normalization(raw_df, exp_df)
     
-    fig, ax = plot_normalization(normed_df, xlabel, color_dict)
+    fig, ax = plot_normalization(normed_df, xlabel, color_dict, xcol, huecol)
     fig.savefig(plot_path, bbox_inches='tight')

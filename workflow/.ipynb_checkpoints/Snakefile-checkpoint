@@ -58,6 +58,8 @@ AUTHORSHIP_REPRESENTATION = osjoin(FIG_DIR, 'authorship_representation_alltime.p
 AUTHORSHIP_REPRESENTATION_LEGEND = osjoin(FIG_DIR, 'authorship_representation_alltime_legend.pdf')
 AUTHORSHIP_REPRESENTATION_OVERTIME = osjoin(FIG_DIR, '{classify_types}','authorship_representation_overtime.pdf')
 FIXED_FIRST_PLOT = osjoin(FIG_DIR, '{classify_types}', 'fixed_first_plot.pdf')
+FIXED_LAST_PLOT = osjoin(FIG_DIR, '{classify_types}', 'fixed_last_plot.pdf')
+FIRST_LAST_PLOT = osjoin(FIG_DIR, '{classify_types}', 'first_last_plot.pdf')
 
 ########
 #params#
@@ -90,5 +92,8 @@ rule all:
         FIXED_LAST,
         PUB_PAIR_RAW,
         expand(FIXED_FIRST_PLOT, classify_types=classify_types),
+        expand(FIXED_LAST_PLOT, classify_types=classify_types),
+        expand(FIRST_LAST_PLOT, classify_types=classify_types),
+        
 
         
