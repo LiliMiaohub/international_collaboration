@@ -83,7 +83,6 @@ rule cal_conditional_pair:
     shell:
         "python scripts/cal_conditional_pair.py {input} {output}"
 
-inputfiles = [FIXED_FIRST]
 rule plot_fixed_first:
     input:
         PUB_PAIR_RAW,
@@ -93,8 +92,41 @@ rule plot_fixed_first:
     output:
         FIXED_FIRST_PLOT
     params:
-        title='Country of the first author'
+        title='Country of the first author',
+        xcol='first_class',
+        huecol='last_class',
     shell:
-        "python scripts/plot_normed_authorship_pair.py {input} {output} '{params.title}'"
+        "python scripts/plot_normed_authorship_pair.py {input} {output} '{params.title}' {params.xcol} {params.huecol}"
+        
+rule plot_fixed_last:
+    input:
+        PUB_PAIR_RAW,
+        FIXED_LAST,
+        ST_GROUP,
+        COLOR_SCHEME
+    output:
+        FIXED_LAST_PLOT
+    params:
+        title='Country of the last author',
+        xcol='last_class',
+        huecol='first_class',
+    shell:
+        "python scripts/plot_normed_authorship_pair.py {input} {output} '{params.title}' {params.xcol} {params.huecol}"
+
+rule plot_first_last:
+    input:
+        PUB_PAIR_RAW,
+        FIRST_LAST_PAIR,
+        ST_GROUP,
+        COLOR_SCHEME
+    output:
+        FIRST_LAST_PLOT
+    params:
+        title='Country of the first author',
+        xcol='first_class',
+        huecol='last_class',
+    shell:
+        "python scripts/plot_normed_authorship_pair.py {input} {output} '{params.title}' {params.xcol} {params.huecol}"
+
         
     
