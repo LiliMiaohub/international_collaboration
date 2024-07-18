@@ -17,6 +17,7 @@ def plot_normalization(df, xlabel, color_dict, xcol, huecol):
                 data=df[df.norm<0],
                color='#D9D9D9',
                ax=ax)
+    ax.set_ylim(-0.8, 0.4)
     ax.set_xlabel(xlabel, fontsize=12)
     ax.set_ylabel("Log(Actual/Expectation)", fontsize=12)
     ax.tick_params(axis='both', which='major', labelsize=10)

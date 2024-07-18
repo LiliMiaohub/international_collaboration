@@ -35,7 +35,7 @@ def plot_worldmap(shp_path, df):
     world_geo.loc[world_geo.NAME=='France','ISO_A3']='FRA'
     world_geo.loc[world_geo.NAME=='Norway','ISO_A3']='NOR'
     
-    colorsList = ['#A6A6A6', '#F4D05E', '#EA6B5F','#912855']
+    colorsList = ['#D9D9D9', '#F4D05E', '#EA6B5F','#912855']
     cmap = colors.ListedColormap(colorsList)
     bounds = np.array([0, 1, 2, 3, 4])
     norm = colors.BoundaryNorm(boundaries=bounds, ncolors=4)
@@ -57,21 +57,21 @@ def plot_legend():
     ax.set_ylim([-5, 5])
 
     # draw the x and y axis
-    ax.axhline(y=0, color='black')
-    ax.axvline(x=0, color='black')
+    ax.axhline(y=0, color='gray')
+    ax.axvline(x=0, color='gray')
 
     # fill the four quadrants with different colors
     ax.fill_betweenx(y=[0, 5], x1=0, x2=5, color='#912855')
-    ax.text(2.5, 2.5, 'Over_First\nOver_Last', ha='center', va='center',fontsize=25, c='white')
+    #ax.text(2.5, 2.5, 'Over_First\nOver_Last', ha='center', va='center',fontsize=25, c='white')
 
     ax.fill_betweenx(y=[0, 5], x1=-5, x2=0, color='#EA6B5F')
-    ax.text(-2.5, 2.5, 'Under_First\nOver_Last', ha='center', va='center',fontsize=25, c='white')
+    #ax.text(-2.5, 2.5, 'Under_First\nOver_Last', ha='center', va='center',fontsize=25, c='white')
 
     ax.fill_betweenx(y=[-5, 0], x1=0, x2=5, color='#F4D05E')
-    ax.text(2.5, -2.5, 'Over_First\nUnder_Last', ha='center', va='center',fontsize=25, c='white')
+    #ax.text(2.5, -2.5, 'Over_First\nUnder_Last', ha='center', va='center',fontsize=25, c='white')
 
-    ax.fill_betweenx(y=[-5, 0], x1=-5, x2=0, color='#A6A6A6')
-    ax.text(-2.5, -2.5, 'Under_First\nUnder_Last', ha='center', va='center',fontsize=25, c='white')
+    ax.fill_betweenx(y=[-5, 0], x1=-5, x2=0, color='#D9D9D9')
+
 
     ax.set_xticks([])
     ax.set_yticks([])
@@ -80,6 +80,9 @@ def plot_legend():
     ax.spines['top'].set_visible(False)
     ax.spines['left'].set_visible(False)
     ax.spines['bottom'].set_visible(False)
+    ax.set_xlabel("First Author", fontsize=15)
+    ax.set_ylabel("Last Author", fontsize=15)
+
     return fig, ax
 
 

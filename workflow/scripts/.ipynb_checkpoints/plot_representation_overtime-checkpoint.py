@@ -25,10 +25,11 @@ def plot_line(data,authorship,ax,title, color_dict):
     df=data[data.role==authorship]
     sns.lineplot(x='year',y='norm',hue='class',data=df,ax=ax,legend=False,
              palette=color_dict)
-    ax.axhline(y=0, color='#C8C8C8', linestyle='--')
+    ax.axhline(y=0, color='#A1A1A6', linestyle='--')
     ax.set_xlabel("")
     ax.set_ylabel("")
     ax.set_title(title,fontsize=12)
+    ax.set_ylim(-0.45, 0.15)
     return ax
 
 def plot(df, color_dict):
