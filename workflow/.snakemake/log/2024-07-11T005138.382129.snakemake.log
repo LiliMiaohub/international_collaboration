@@ -1,0 +1,211 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                                          count    min threads    max threads
+-----------------------------------------  -------  -------------  -------------
+all                                              1              1              1
+plot_authorship_distribution                     2              1              1
+plot_first_last                                  2              1              1
+plot_fixed_first                                 2              1              1
+plot_fixed_last                                  2              1              1
+plot_international_workforce_distribution        2              1              1
+plot_representation_alltime                      1              1              1
+plot_representation_overtime                     2              1              1
+total                                           14              1              1
+
+Select jobs to execute...
+
+[Thu Jul 11 00:51:47 2024]
+rule plot_fixed_last:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_pair_raw.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_last.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/st/fixed_last_plot.pdf
+    jobid: 18
+    reason: Updated input files: ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    wildcards: classify_types=st
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:51:54 2024]
+Finished job 18.
+1 of 14 steps (7%) done
+Select jobs to execute...
+
+[Thu Jul 11 00:51:54 2024]
+rule plot_international_workforce_distribution:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/international/pub_author.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_income.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/income/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/income/international_workforce_prop.pdf
+    jobid: 6
+    reason: Updated input files: ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    wildcards: classify_types=income
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:52:44 2024]
+Finished job 6.
+2 of 14 steps (14%) done
+Select jobs to execute...
+
+[Thu Jul 11 00:52:44 2024]
+rule plot_authorship_distribution:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_income.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/income/authorship_distribution.pdf
+    jobid: 8
+    reason: Updated input files: ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    wildcards: classify_types=income
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:53:21 2024]
+Finished job 8.
+3 of 14 steps (21%) done
+Select jobs to execute...
+
+[Thu Jul 11 00:53:21 2024]
+rule plot_representation_alltime:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv, ../data/dropbox/LaborDivision/data/additionaldata/worldmap/ne_50m_admin_0_countries.shp
+    output: ../data/dropbox/LaborDivision/figs/authorship_representation_alltime.pdf, ../data/dropbox/LaborDivision/figs/authorship_representation_alltime_legend.pdf
+    jobid: 10
+    reason: Missing output files: ../data/dropbox/LaborDivision/figs/authorship_representation_alltime.pdf
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:53:57 2024]
+Finished job 10.
+4 of 14 steps (29%) done
+Select jobs to execute...
+
+[Thu Jul 11 00:53:57 2024]
+rule plot_first_last:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_pair_raw.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/first_last_pair.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/st/first_last_plot.pdf
+    jobid: 20
+    reason: Updated input files: ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    wildcards: classify_types=st
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:54:04 2024]
+Finished job 20.
+5 of 14 steps (36%) done
+Select jobs to execute...
+
+[Thu Jul 11 00:54:04 2024]
+rule plot_fixed_first:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_pair_raw.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_first.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/st/fixed_first_plot.pdf
+    jobid: 16
+    reason: Updated input files: ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    wildcards: classify_types=st
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:54:11 2024]
+Finished job 16.
+6 of 14 steps (43%) done
+Select jobs to execute...
+
+[Thu Jul 11 00:54:11 2024]
+rule plot_representation_overtime:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf
+    jobid: 11
+    reason: Missing output files: ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf
+    wildcards: classify_types=st
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:54:45 2024]
+Finished job 11.
+7 of 14 steps (50%) done
+Select jobs to execute...
+
+[Thu Jul 11 00:54:45 2024]
+rule plot_authorship_distribution:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/st/authorship_distribution.pdf
+    jobid: 7
+    reason: Missing output files: ../data/dropbox/LaborDivision/figs/st/authorship_distribution.pdf
+    wildcards: classify_types=st
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:55:22 2024]
+Finished job 7.
+8 of 14 steps (57%) done
+Select jobs to execute...
+
+[Thu Jul 11 00:55:22 2024]
+rule plot_first_last:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_pair_raw.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/first_last_pair.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_income.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/income/first_last_plot.pdf
+    jobid: 21
+    reason: Updated input files: ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    wildcards: classify_types=income
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:55:29 2024]
+Finished job 21.
+9 of 14 steps (64%) done
+Select jobs to execute...
+
+[Thu Jul 11 00:55:29 2024]
+rule plot_international_workforce_distribution:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/international/pub_author.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/st/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/st/international_workforce_prop.pdf
+    jobid: 5
+    reason: Missing output files: ../data/dropbox/LaborDivision/figs/st/international_workforce_prop.pdf, ../data/dropbox/LaborDivision/figs/st/international_workforce_raw.pdf
+    wildcards: classify_types=st
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:56:20 2024]
+Finished job 5.
+10 of 14 steps (71%) done
+Select jobs to execute...
+
+[Thu Jul 11 00:56:20 2024]
+rule plot_fixed_last:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_pair_raw.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_last.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_income.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/income/fixed_last_plot.pdf
+    jobid: 19
+    reason: Updated input files: ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    wildcards: classify_types=income
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:56:27 2024]
+Finished job 19.
+11 of 14 steps (79%) done
+Select jobs to execute...
+
+[Thu Jul 11 00:56:27 2024]
+rule plot_fixed_first:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_pair_raw.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_first.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_income.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/income/fixed_first_plot.pdf
+    jobid: 17
+    reason: Updated input files: ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    wildcards: classify_types=income
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:56:34 2024]
+Finished job 17.
+12 of 14 steps (86%) done
+Select jobs to execute...
+
+[Thu Jul 11 00:56:34 2024]
+rule plot_representation_overtime:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_income.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/income/authorship_representation_overtime.pdf
+    jobid: 12
+    reason: Updated input files: ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    wildcards: classify_types=income
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:57:11 2024]
+Finished job 12.
+13 of 14 steps (93%) done
+Select jobs to execute...
+
+[Thu Jul 11 00:57:11 2024]
+localrule all:
+    input: ../data/dropbox/LaborDivision/data/cleanedraw/pub.pkl, ../data/dropbox/LaborDivision/data/cleanedraw/pub_author.pkl, ../data/dropbox/LaborDivision/data/cleanedraw/author_info.pkl, ../data/dropbox/LaborDivision/data/deriveddata/all/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/international/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/figs/st/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/income/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/st/international_workforce_prop.pdf, ../data/dropbox/LaborDivision/figs/income/international_workforce_prop.pdf, ../data/dropbox/LaborDivision/figs/st/authorship_distribution.pdf, ../data/dropbox/LaborDivision/figs/income/authorship_distribution.pdf, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv, ../data/dropbox/LaborDivision/figs/authorship_representation_alltime.pdf, ../data/dropbox/LaborDivision/figs/authorship_representation_alltime_legend.pdf, ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf, ../data/dropbox/LaborDivision/figs/income/authorship_representation_overtime.pdf, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/first_last_pair.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_first.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_last.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_pair_raw.csv, ../data/dropbox/LaborDivision/figs/st/fixed_first_plot.pdf, ../data/dropbox/LaborDivision/figs/income/fixed_first_plot.pdf, ../data/dropbox/LaborDivision/figs/st/fixed_last_plot.pdf, ../data/dropbox/LaborDivision/figs/income/fixed_last_plot.pdf, ../data/dropbox/LaborDivision/figs/st/first_last_plot.pdf, ../data/dropbox/LaborDivision/figs/income/first_last_plot.pdf
+    jobid: 0
+    reason: Input files updated by another job: ../data/dropbox/LaborDivision/figs/st/international_workforce_prop.pdf, ../data/dropbox/LaborDivision/figs/st/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/st/authorship_distribution.pdf, ../data/dropbox/LaborDivision/figs/income/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/st/fixed_first_plot.pdf, ../data/dropbox/LaborDivision/figs/income/authorship_representation_overtime.pdf, ../data/dropbox/LaborDivision/figs/income/fixed_last_plot.pdf, ../data/dropbox/LaborDivision/figs/authorship_representation_alltime_legend.pdf, ../data/dropbox/LaborDivision/figs/authorship_representation_alltime.pdf, ../data/dropbox/LaborDivision/figs/income/international_workforce_prop.pdf, ../data/dropbox/LaborDivision/figs/income/first_last_plot.pdf, ../data/dropbox/LaborDivision/figs/st/fixed_last_plot.pdf, ../data/dropbox/LaborDivision/figs/income/authorship_distribution.pdf, ../data/dropbox/LaborDivision/figs/st/first_last_plot.pdf, ../data/dropbox/LaborDivision/figs/income/fixed_first_plot.pdf, ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf
+    resources: tmpdir=/tmp
+
+[Thu Jul 11 00:57:11 2024]
+Finished job 0.
+14 of 14 steps (100%) done
+Complete log: .snakemake/log/2024-07-11T005138.382129.snakemake.log

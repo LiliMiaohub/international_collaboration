@@ -1,0 +1,38 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                                          count    min threads    max threads
+-----------------------------------------  -------  -------------  -------------
+all                                              1              1              1
+plot_international_workforce_distribution        1              1              1
+total                                            2              1              1
+
+Select jobs to execute...
+
+[Fri Jul 12 03:31:26 2024]
+rule plot_international_workforce_distribution:
+    input: ../data/dropbox/LaborDivision/data/deriveddata/international/pub_author.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/cntry_st.csv, ../data/dropbox/LaborDivision/data/additionaldata/cntry_classification/color_scheme.csv
+    output: ../data/dropbox/LaborDivision/figs/st/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/st/international_workforce_prop.pdf
+    jobid: 5
+    reason: Missing output files: ../data/dropbox/LaborDivision/figs/st/international_workforce_raw.pdf
+    wildcards: classify_types=st
+    resources: tmpdir=/tmp
+
+[Fri Jul 12 03:32:17 2024]
+Finished job 5.
+1 of 2 steps (50%) done
+Select jobs to execute...
+
+[Fri Jul 12 03:32:17 2024]
+localrule all:
+    input: ../data/dropbox/LaborDivision/data/cleanedraw/pub.pkl, ../data/dropbox/LaborDivision/data/cleanedraw/pub_author.pkl, ../data/dropbox/LaborDivision/data/cleanedraw/author_info.pkl, ../data/dropbox/LaborDivision/data/deriveddata/all/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/international/pub_author.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/pub_author.csv, ../data/dropbox/LaborDivision/figs/st/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/income/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/st/international_workforce_prop.pdf, ../data/dropbox/LaborDivision/figs/income/international_workforce_prop.pdf, ../data/dropbox/LaborDivision/figs/st/authorship_distribution.pdf, ../data/dropbox/LaborDivision/figs/income/authorship_distribution.pdf, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_author_expected.csv, ../data/dropbox/LaborDivision/figs/authorship_representation_alltime.pdf, ../data/dropbox/LaborDivision/figs/authorship_representation_alltime_legend.pdf, ../data/dropbox/LaborDivision/figs/st/authorship_representation_overtime.pdf, ../data/dropbox/LaborDivision/figs/income/authorship_representation_overtime.pdf, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/first_last_pair.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_first.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/fixed_last.csv, ../data/dropbox/LaborDivision/data/deriveddata/intl_noalpha/authorship_reshuffle/pub_pair_raw.csv, ../data/dropbox/LaborDivision/figs/st/fixed_first_plot.pdf, ../data/dropbox/LaborDivision/figs/income/fixed_first_plot.pdf, ../data/dropbox/LaborDivision/figs/st/fixed_last_plot.pdf, ../data/dropbox/LaborDivision/figs/income/fixed_last_plot.pdf, ../data/dropbox/LaborDivision/figs/st/first_last_plot.pdf, ../data/dropbox/LaborDivision/figs/income/first_last_plot.pdf
+    jobid: 0
+    reason: Input files updated by another job: ../data/dropbox/LaborDivision/figs/st/international_workforce_raw.pdf, ../data/dropbox/LaborDivision/figs/st/international_workforce_prop.pdf
+    resources: tmpdir=/tmp
+
+[Fri Jul 12 03:32:17 2024]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: .snakemake/log/2024-07-12T033121.869521.snakemake.log
