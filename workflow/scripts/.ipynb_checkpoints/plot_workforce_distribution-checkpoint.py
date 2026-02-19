@@ -7,6 +7,7 @@ import numpy as np
 from matplotlib.lines import Line2D
 import sys
 import os
+import matplotlib.patches as patches
 
 def plot_line(df, x, y, ylabel, color_dict):
     
@@ -45,6 +46,7 @@ if __name__ == "__main__":
     color_scheme_path = sys.argv[3]
     raw_cnt_distribution = sys.argv[4]
     prop_distribution = sys.argv[5]
+    legend_path = sys.argv[6]
     
     
     pub_author = pd.read_csv(pub_author_path)
@@ -63,8 +65,8 @@ if __name__ == "__main__":
     author_cnt = author_cnt.groupby(['year','class']).size().reset_index(name='num_author')
     author_cnt.loc[:,'cnt_log'] = np.log10(author_cnt['num_author'])
     
-    fig, ax = plot_line(author_cnt, 'year','cnt_log','Log number of authors', color_dict)
-    ax.set_yticks([4.5,5,5.5,6],['$10^{4.5}$','$10^{5}$','$10^{5.5}$','$10^{6}$'])
+    fig, ax = plot_line(author_cnt, 'year','cnt_log','Log number of international authors', color_dict)
+    ax.set_yticks([4,5,6],['$10^{4}$','$10^{5}$','$10^{6}$'])
     plt.savefig(raw_cnt_distribution, bbox_inches='tight')
     
     prop_df = author_cnt.pivot(index='year', columns='class', values='num_author')
@@ -74,4 +76,17 @@ if __name__ == "__main__":
     fig, ax = plot_stacked_bar(prop_df, color_dict, '% of international authors')
     plt.savefig(prop_distribution, bbox_inches='tight')
     
-    
+
+    fig, ax = plt.subplots(figsize=(6, 1))
+    ax.axis('off')
+    num_labels = len(color_dict)
+    spacing = 1.0 / num_labels
+
+    for i, (label, color) in enumerate(color_dict.items()):
+        y_position = 1 - (i + 0.5) * spacing
+        rect = patches.Rectangle((0.1, y_position - 0.05), 0.1, 0.1, facecolor=color)
+        ax.add_patch(rect)
+        ax.text(0.22, y_position, label, va='center', ha='left', fontsize=12, color='black')
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+    plt.savefig(legend_path, bbox_inches='tight')
