@@ -53,11 +53,11 @@ if __name__ == "__main__":
 
     
     fig, ax=plt.subplots(nrows=1,ncols=3,figsize=(12.8,3))
-    ax[0]=plot(authorship_cnt[authorship_cnt.role=='F'],'First Author', ax[0], color_dict, '% of first authorship')
+    ax[0]=plot(authorship_cnt[authorship_cnt.role=='F'],'First Author', ax[0], color_dict, '% of first authors')
     #ax[0].set_ylabel("Proportion of authors",fontsize=15)
 
-    ax[1]=plot(authorship_cnt[authorship_cnt.role=='M'],'Middle Author', ax[1], color_dict, '% of middle authorship')
-    ax[2]=plot(authorship_cnt[authorship_cnt.role=='L'],'Last Author',ax[2], color_dict, '% of last authorship')
+    ax[1]=plot(authorship_cnt[authorship_cnt.role=='M'],'Middle Author', ax[1], color_dict, '% of middle authors')
+    ax[2]=plot(authorship_cnt[authorship_cnt.role=='L'],'Last Author',ax[2], color_dict, '% of last authors')
 
     #lines = [Line2D([0], [0], color=v, linewidth=3, linestyle='-', label=k) for k,v in color_dict.items()]
     #ax[2].legend(handles=lines, loc=(0.62,0.77),frameon=False)

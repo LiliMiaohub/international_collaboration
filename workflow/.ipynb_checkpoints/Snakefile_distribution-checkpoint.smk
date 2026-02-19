@@ -14,7 +14,8 @@ rule plot_international_workforce_distribution:
         COLOR_SCHEME
     output:
         INTERNATIONAL_WORKFORCE_DISTRIBUTION_RAW,
-        INTERNATIONAL_WORKFORCE_DISTRIBUTION_PROP
+        INTERNATIONAL_WORKFORCE_DISTRIBUTION_PROP,
+        LEGEND_CLASS
     shell:
         "python scripts/plot_workforce_distribution.py {input} {output}"
         
@@ -57,6 +58,45 @@ rule plot_representation_overtime:
         AUTHORSHIP_REPRESENTATION_OVERTIME
     shell:
         "python scripts/plot_representation_overtime.py {input} {output}"
+        
+rule select_pub_across_groups:
+    input:
+        PUB_AUTHOR_INTL_NOALPHA,
+        ST_GROUP
+    output:
+        PUB_RAW_ACROSS_GROUPS
+    shell:
+        "python scripts/select_pub_across_capacity.py {input} {output}"
+        
+rule reshuffle_authorship_across_groups:
+    input:
+        PUB_RAW_ACROSS_GROUPS
+    output:
+        PUB_EXP_ACROSS_GROUPS
+    shell:
+        "python scripts/reshuffle_author.py {input} {output}" 
+        
+rule plot_representation_overtime_across_groups:
+    input:
+        PUB_RAW_ACROSS_GROUPS,
+        PUB_EXP_ACROSS_GROUPS,
+        ST_GROUP,
+        COLOR_SCHEME
+    output:
+        AUTHORSHIP_REPRESENTATION_OVERTIME_ACROSS_GROUPS
+    shell:
+        "python scripts/plot_representation_overtime.py {input} {output}"
+
+rule plot_representation_alltime_across_groups:
+    input:
+        PUB_RAW_ACROSS_GROUPS,
+        PUB_EXP_ACROSS_GROUPS,
+        WORLD_SHP
+    output:
+        AUTHORSHIP_REPRESENTATION_ACROSS_GROUPS,
+        AUTHORSHIP_REPRESENTATION_LEGEND_ACROSS_GROUPS
+    shell:
+        "python scripts/plot_representation_alltime.py {input} {output}"
         
 rule cal_first_last_pair:
     input:

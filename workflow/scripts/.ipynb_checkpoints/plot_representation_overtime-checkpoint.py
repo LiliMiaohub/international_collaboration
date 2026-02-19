@@ -21,7 +21,7 @@ def get_normed_authorship(raw_df, exp_df):
     
     return cntry_all
 
-def plot_line(data,authorship,ax,title, color_dict):
+def plot_line(data,authorship,ax,title, color_dict, ymax):
     df=data[data.role==authorship]
     sns.lineplot(x='year',y='norm',hue='class',data=df,ax=ax,legend=False,
              palette=color_dict)
@@ -29,15 +29,17 @@ def plot_line(data,authorship,ax,title, color_dict):
     ax.set_xlabel("")
     ax.set_ylabel("")
     ax.set_title(title,fontsize=12)
-    ax.set_ylim(-0.45, 0.15)
+    ax.set_ylim(-0.45, ymax)
     return ax
 
 def plot(df, color_dict):
     
     fig, ax=plt.subplots(nrows=1,ncols=3,figsize=(16,5))
-    ax0=plot_line(df,'F',ax[0],'First Author', color_dict)
-    ax1=plot_line(df,'M',ax[1],'Middle Author', color_dict)
-    ax2=plot_line(df,'L',ax[2],'Last Author', color_dict)
+    ymax = np.ceil((df.groupby(['class','role'])['norm'].mean().max()+0.1)*10)/10
+    
+    ax0=plot_line(df,'F',ax[0],'First Author', color_dict, ymax)
+    ax1=plot_line(df,'M',ax[1],'Middle Author', color_dict, ymax)
+    ax2=plot_line(df,'L',ax[2],'Last Author', color_dict, ymax)
 
    
     lines = [Line2D([0], [0], color=v, linewidth=3, linestyle='-', label=k) for k,v in color_dict.items()]
