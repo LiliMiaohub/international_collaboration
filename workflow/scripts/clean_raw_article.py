@@ -1,5 +1,6 @@
 """this script cleans the raw article file with replace column with new names, define data type and output the mapping between ost_bk and uid
 """
+import pickle
 import sys
 import pandas as pd
 
